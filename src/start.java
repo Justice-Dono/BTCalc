@@ -17,8 +17,22 @@ public class start {
         tribe Arkasodara = new tribe(3, 7);
         tribe Omicron = new tribe(3, 7);
         tribe Loporrit = new tribe(3, 7);
-        System.out.println("Starting here");
-        System.out.println(Amaljaa.maxRank);
-        System.out.println(Amaljaa.daysLeft(1,0));
+        System.out.println(Kobold.daysLeft(2,0));
+        System.out.println(Sylph.daysLeft(3,0));
+        System.out.println(Sahagin.daysLeft(1,0));
+        System.out.println(Ixali.daysLeft(1,0));
+        System.out.println(VanuVanu.daysLeft(1,0));
+        System.out.println(Vath.daysLeft(3,0));
+        System.out.println(Namazu.daysLeft(3,0));
+        System.out.println(Anata.daysLeft(3,0));
+        System.out.println(Kojin.daysLeft(3,0));
+        System.out.println(Pixie.daysLeft(5,0));
+        System.out.println(Qitari.daysLeft(3,0));
+        System.out.println(Arkasodara.daysLeft(7,0));
+        
+        
+        
+        
+        
     }
 }

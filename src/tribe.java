@@ -39,8 +39,6 @@ public class tribe {
             return 0;
         }
         else{
-            System.out.println(cRank);
-            System.out.println(maxRank);
             for(int x = maxRank; x > cRank-1; x--){
 
                 days = days + this.rankCalc(x);
