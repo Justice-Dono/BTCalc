@@ -1,17 +1,19 @@
 public class tribe {
     private final Integer[] rankTable = {0,150,360,510,720,990,1320,1730};
+    public String name;
     public Integer startRank;
     public Integer maxRank;
     public Integer[] xpTable;
 
-    public tribe(Integer start, Integer max){
+    public tribe(Integer start, Integer max, String inputName){
+        name = inputName;
         startRank = start;
         maxRank = max;
         xpTable = new Integer[] {0,0,0,60,60,60,60,60};
     }
 
-    public static tribe oldTribe(Integer newStart, Integer newMax, Integer r1, Integer r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7){
-        tribe localTribe = new tribe(newStart, newMax);
+    public static tribe oldTribe(Integer newStart, Integer newMax, Integer r1, Integer r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7, String newName){
+        tribe localTribe = new tribe(newStart, newMax, newName);
 
         localTribe.xpTable = new Integer[] {0, r1, r2, r3, r4, r5, r6, r7};
         localTribe.startRank = newStart;

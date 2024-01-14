@@ -1,38 +1,62 @@
+import java.util.Scanner;
+
 public class start {
     public static void main(String[] args) throws Exception {
-        tribe Amaljaa = tribe.oldTribe(1,3,10,14,20,0,0,0,0);
-        tribe Kobold = tribe.oldTribe(1,3,10,14,20,0,0,0,0);
-        tribe Sahagin = tribe.oldTribe(1,3,10,14,20,0,0,0,0);
-        tribe Sylph = tribe.oldTribe(1,3,10,14,20,0,0,0,0);
-        tribe Ixali = tribe.oldTribe(1,6,20,24,29,35,42,50,0);
-        tribe VanuVanu = tribe.oldTribe(1,7,50,50,50,50,50,50,50);
-        tribe Moogle = tribe.oldTribe(1,7,50,50,50,50,50,50,50);
-        tribe Vath = tribe.oldTribe(3,7,0,0,70,70,70,70,70);
-        tribe Namazu = new tribe(3, 7);
-        tribe Anata = new tribe(3, 7);
-        tribe Kojin = new tribe(3, 7);
-        tribe Pixie = new tribe(3, 7);
-        tribe Qitari = new tribe(3, 7);
-        tribe Dwarf = new tribe(3, 7);
-        tribe Arkasodara = new tribe(3, 7);
-        tribe Omicron = new tribe(3, 7);
-        tribe Loporrit = new tribe(3, 7);
-        System.out.println(Kobold.daysLeft(2,0));
-        System.out.println(Sylph.daysLeft(3,0));
-        System.out.println(Sahagin.daysLeft(1,0));
-        System.out.println(Ixali.daysLeft(1,0));
-        System.out.println(VanuVanu.daysLeft(1,0));
-        System.out.println(Vath.daysLeft(3,0));
-        System.out.println(Namazu.daysLeft(3,0));
-        System.out.println(Anata.daysLeft(3,0));
-        System.out.println(Kojin.daysLeft(3,0));
-        System.out.println(Pixie.daysLeft(5,0));
-        System.out.println(Qitari.daysLeft(3,0));
-        System.out.println(Arkasodara.daysLeft(7,0));
-        
-        
-        
-        
-        
+        tribe Amaljaa = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Amaljaa");
+        tribe Kobold = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Kobold");
+        tribe Sahagin = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sahagin");
+        tribe Sylph = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sylph");
+        tribe Ixali = tribe.oldTribe(1,6,20,24,29,35,42,50,0,"Ixali");
+        tribe VanuVanu = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"VanuVanu");
+        tribe Moogle = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"Moogle");
+        tribe Vath = tribe.oldTribe(3,7,0,0,70,70,70,70,70,"Vath");
+        tribe Namazu = new tribe(3, 7,"Namazu");
+        tribe Anata = new tribe(3, 7,"Anata");
+        tribe Kojin = new tribe(3, 7,"Kojin");
+        tribe Pixie = new tribe(3, 7,"Pixie");
+        tribe Qitari = new tribe(3, 7,"Qitari");
+        tribe Dwarf = new tribe(3, 7,"Dwarf");
+        tribe Arkasodara = new tribe(3, 7,"Arkasodara");
+        tribe Omicron = new tribe(3, 7, "Omicron");
+        tribe Loporrit = new tribe(3, 7, "Loporrit");
+        tribe[] all = {Amaljaa, Kobold, Sahagin, Sylph, Ixali, VanuVanu, Moogle, Vath, Namazu, Anata, Kojin, Pixie, Qitari, Dwarf, Arkasodara, Omicron,Loporrit};
+        Integer days = 0;
+        System.out.println(all.length);
+        Scanner localScanner = new Scanner(System.in);
+        for(int x = 0; x < all.length; x++){
+            tribe localTribe = all[x];
+            System.out.println("Have you maxed out the " + localTribe.name + " tribe? [y/n]");
+            String r1 = localScanner.nextLine();
+            Boolean loopbreak = false;
+            Integer flag = 0;
+            while(loopbreak != true){
+                if(r1.equalsIgnoreCase("Y")){
+                    days = days + 0;
+                    flag = 0;
+                    loopbreak = true;
+                }
+                if(r1.equalsIgnoreCase("N")){
+                    flag = 1;
+                    loopbreak = true;
+                }
+                if(loopbreak == false){
+                    System.out.println("I didn't quite get that.");
+                    Thread.sleep(1000);
+                    System.out.println("Please type out your answer again");
+                    Thread.sleep(1000);
+                    System.out.println("Have you maxed out the " + localTribe.name + " tribe? [y/n]");
+                    r1 = localScanner.nextLine();
+                }
+            }
+            if(flag ==1){
+                System.out.println("What is the current rank of the tribe? (Starting rank is " + localTribe.startRank + ")");
+                Integer localr = Integer.parseInt(localScanner.nextLine());
+                Integer nextDay = localTribe.daysLeft(localr, 0);
+                days = days + nextDay;
+            }
+        }
+        localScanner.close();
+        Double sessions = Math.ceil(days/4);
+        System.out.println("You will be finished in " + sessions + " days.");
     }
 }
