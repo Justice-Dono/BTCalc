@@ -17,7 +17,8 @@ public class start {
         tribe Arkasodara = new tribe(3, 7);
         tribe Omicron = new tribe(3, 7);
         tribe Loporrit = new tribe(3, 7);
-        System.out.println(Omicron.rankCalc(3));
-        System.out.println(Vath.rankCalc(5));
+        System.out.println("Starting here");
+        System.out.println(Amaljaa.maxRank);
+        System.out.println(Amaljaa.daysLeft(1,0));
     }
 }
