@@ -21,9 +21,10 @@ public class tribe {
         return localTribe;
     }
 
-    public int rankCalc(Integer rank){
+    public int rankCalc(Integer rank, Integer xp){
         Integer total = rankTable[rank];
         float fDaily = xpTable[rank];
+        fDaily = fDaily - xp;
         float days = (total/(fDaily*3));
         Double result = Math.ceil(days);
         return result.intValue();
@@ -37,13 +38,13 @@ public class tribe {
     public int daysLeft(Integer cRank, Integer xpLeft){
         int days = 0;
         if (cRank > maxRank){
-            System.out.println("Amoigus!");
+            //System.out.println("Amoigus!");
             return 0;
         }
         else{
             for(int x = maxRank; x > cRank-1; x--){
 
-                days = days + this.rankCalc(x);
+                days = days + this.rankCalc(x, xpLeft);
 
             }
         return days;

@@ -51,7 +51,9 @@ public class start {
             if(flag ==1){
                 System.out.println("What is the current rank of the tribe? (Starting rank is " + localTribe.startRank + ")");
                 Integer localr = Integer.parseInt(localScanner.nextLine());
-                Integer nextDay = localTribe.daysLeft(localr, 0);
+                System.out.println("How much reputation do you have towards the current rank?");
+                Integer localxp = Integer.parseInt(localScanner.nextLine());
+                Integer nextDay = localTribe.daysLeft(localr, localxp);
                 days = days + nextDay;
             }
         }
