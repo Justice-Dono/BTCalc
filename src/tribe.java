@@ -1,5 +1,5 @@
 public class tribe {
-    private final Integer[] rankTable = {0,150,360,510,720,990,1320,1730};
+    public final Integer[] rankTable = {0,150,360,510,720,990,1320,1730};
     public String name;
     public Integer startRank;
     public Integer maxRank;
