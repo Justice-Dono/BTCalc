@@ -1,28 +1,12 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class calc {
-    public static void runCalc() throws InterruptedException{
-        tribe Amaljaa = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Amaljaa");
-        tribe Sylph = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sylph");
-        tribe Kobold = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Kobold");
-        tribe Sahagin = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sahagin");
-        tribe Ixali = tribe.oldTribe(1,6,36,39,42,46,51,56,0,"Ixali");
-        tribe VanuVanu = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"VanuVanu");
-        tribe Moogle = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"Moogle");
-        tribe Vath = tribe.oldTribe(3,7,0,0,70,70,70,70,70,"Vath");
-        tribe Namazu = new tribe(3, 7,"Namazu");
-        tribe Anata = new tribe(3, 7,"Anata");
-        tribe Kojin = new tribe(3, 7,"Kojin");
-        tribe Pixie = new tribe(3, 7,"Pixie");
-        tribe Qitari = new tribe(3, 7,"Qitari");
-        tribe Dwarf = new tribe(3, 7,"Dwarf");
-        tribe Arkasodara = new tribe(3, 7,"Arkasodara");
-        tribe Omicron = new tribe(3, 7, "Omicron");
-        tribe Loporrit = new tribe(3, 7, "Loporrit");
-        tribe[] all = {Amaljaa, Sylph, Kobold, Sahagin, Ixali, VanuVanu, Moogle, Vath, Namazu, Anata, Kojin, Pixie, Qitari, Dwarf, Arkasodara, Omicron,Loporrit};
-        System.out.println(all.length);
+    public static void runCalc() throws InterruptedException, FileNotFoundException, IOException{
+        tribe[] all = calcFile.tribeRead();
         Scanner localScanner = new Scanner(System.in);
         Integer[] daysTracker = {0,0,0,0};
         for(int x = 0; x < all.length; x++){
