@@ -50,4 +50,20 @@ public class tribe {
         return days;
         }
     }
+
+    //Part of this code was yoinked from stackexchange: https://stackoverflow.com/questions/51693064/finding-the-index-of-the-smallest-element-in-an-array-java
+    //Slightly tweeked because I am worse at coding and do not care about empty case or the worst case.
+    public static Integer getSmallest(Integer[] array){
+        //Removed the error checking :3
+        Integer index = 0;
+        Integer min = array[index];
+    
+        for (Integer i = 1; i < array.length; i++){
+            if (array[i] <= min){
+            min = array[i];
+            index = i;
+            }
+        }
+        return index;
+    }
 }

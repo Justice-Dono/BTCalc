@@ -8,7 +8,7 @@ public class start {
         tribe Sylph = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sylph");
         tribe Kobold = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Kobold");
         tribe Sahagin = tribe.oldTribe(1,3,10,14,20,0,0,0,0,"Sahagin");
-        tribe Ixali = tribe.oldTribe(1,6,20,24,29,35,42,50,0,"Ixali");
+        tribe Ixali = tribe.oldTribe(1,6,36,39,42,46,51,56,0,"Ixali");
         tribe VanuVanu = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"VanuVanu");
         tribe Moogle = tribe.oldTribe(1,7,50,50,50,50,50,50,50,"Moogle");
         tribe Vath = tribe.oldTribe(3,7,0,0,70,70,70,70,70,"Vath");
@@ -21,11 +21,10 @@ public class start {
         tribe Arkasodara = new tribe(3, 7,"Arkasodara");
         tribe Omicron = new tribe(3, 7, "Omicron");
         tribe Loporrit = new tribe(3, 7, "Loporrit");
-        tribe[] all = {Amaljaa, Kobold, Sahagin, Sylph, Ixali, VanuVanu, Moogle, Vath, Namazu, Anata, Kojin, Pixie, Qitari, Dwarf, Arkasodara, Omicron,Loporrit};
+        tribe[] all = {Amaljaa, Sylph, Kobold, Sahagin, Ixali, VanuVanu, Moogle, Vath, Namazu, Anata, Kojin, Pixie, Qitari, Dwarf, Arkasodara, Omicron,Loporrit};
         System.out.println(all.length);
         Scanner localScanner = new Scanner(System.in);
         Integer[] daysTracker = {0,0,0,0};
-        Integer count = 0;
         for(int x = 0; x < all.length; x++){
             tribe localTribe = all[x];
             System.out.println("Have you maxed out the " + localTribe.name + " tribe? [y/n]");
@@ -34,6 +33,7 @@ public class start {
             Integer flag = 0;
             Integer localr = 0;
             Integer localxp = 0;
+            //The Boolean won't stop appearing as a warning and it is driving me crazy.
             Boolean inputMiss = false;
             while(loopbreak != true){
                 if(r1.equalsIgnoreCase("Y")){
@@ -69,11 +69,8 @@ public class start {
             }
             if(flag ==1){
                 Integer nextDay = localTribe.daysLeft(localr, localxp);
-                daysTracker[count] = daysTracker[count] + nextDay;
-                count = count + 1;
-                if(count >= 4){
-                    count = 0;
-                }
+                Integer index = tribe.getSmallest(daysTracker);
+                daysTracker[index] = daysTracker[index] + nextDay;
             }
         }
         localScanner.close();
