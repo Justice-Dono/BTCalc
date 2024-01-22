@@ -5,6 +5,12 @@ public class tribe {
     public Integer maxRank;
     public Integer[] xpTable;
 
+    /**
+     * Constructor for Tribe object. Meant to replicate the functions of the beast tribes in Final Fantasy XIV.
+     * @param start The starting rank of the tribe.
+     * @param max The maximum rank where the player must max the reputation bar (technically one rank below the in-game maximum).
+     * @param inputName The name of the beast tribe.
+     */
     public tribe(Integer start, Integer max, String inputName){
         name = inputName;
         startRank = start;
@@ -51,7 +57,7 @@ public class tribe {
         }
     }
 
-    //Part of this code was yoinked from stackexchange: https://stackoverflow.com/questions/51693064/finding-the-index-of-the-smallest-element-in-an-array-java
+    //Part of this code was yoinked from stackexchange: https://stackoverflow.com/questions/51693064/finding-the-index-of-the-smallest-element-in-an-array-java.
     //Slightly tweeked because I am worse at coding and do not care about empty case or the worst case.
     public static Integer getSmallest(Integer[] array){
         //Removed the error checking :3
@@ -59,6 +65,7 @@ public class tribe {
         Integer min = array[index];
     
         for (Integer i = 1; i < array.length; i++){
+            //Simple loop through the 
             if (array[i] <= min){
             min = array[i];
             index = i;
