@@ -8,7 +8,16 @@ public class calc {
     public static void runCalc() throws InterruptedException, FileNotFoundException, IOException{
         tribe[] all = calcFile.tribeRead();
         Scanner localScanner = new Scanner(System.in);
-        Integer[] daysTracker = {0,0,0,0};
+        System.out.println("How many tribes a day are you planning to do?");
+        String dayResult = localScanner.nextLine();
+        Integer newResult = Integer.parseInt(dayResult);
+        if(newResult > 4){
+            newResult = 4;
+        }
+        Integer[] daysTracker = new Integer[newResult];
+        for(Integer x = 0; x < newResult; x++){
+            daysTracker[x] = 0;
+        }
         for(int x = 0; x < all.length; x++){
             tribe localTribe = all[x];
             System.out.println("Have you maxed out the " + localTribe.name + " tribe? [y/n]");
@@ -18,6 +27,7 @@ public class calc {
             Integer localr = 0;
             Integer localxp = 0;
             //The Boolean won't stop appearing as a warning and it is driving me crazy.
+            //I have figured out why it is a warning but will not fix it for now.
             Boolean inputMiss = false;
             while(loopbreak != true){
                 if(r1.equalsIgnoreCase("Y")){
@@ -51,7 +61,7 @@ public class calc {
                     r1 = localScanner.nextLine();
                 }
             }
-            if(flag ==1){
+            if(flag == 1){
                 Integer nextDay = localTribe.daysLeft(localr, localxp);
                 Integer index = tribe.getSmallest(daysTracker);
                 daysTracker[index] = daysTracker[index] + nextDay;
