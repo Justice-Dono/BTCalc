@@ -14,7 +14,6 @@ public class calcFile {
         tribe[] tribeArray =  new tribe[intCount];
         try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
             String line;
-            
             while ((line = br.readLine()) != null) {
                 String[] tribeLine = {};
                 tribeLine = line.split(",");
