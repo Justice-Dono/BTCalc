@@ -12,7 +12,7 @@ public class calc {
         System.out.println("How many tribes a day are you planning to do?");
         String dayResult = localScanner.nextLine();
         Integer newResult = Integer.parseInt(dayResult);
-        if(newResult > 4){
+        if(newResult > 4 || newResult < 1){
             newResult = 4;
         }
         Integer[] daysTracker = new Integer[newResult];
