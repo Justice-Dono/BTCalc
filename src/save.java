@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class save {
     public static void newFile() throws NumberFormatException, IOException {
-        File localFile = new File("test.csv");
+        File localFile = new File("file.csv");
         localFile.createNewFile();
         try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
             String line;
