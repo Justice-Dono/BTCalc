@@ -44,10 +44,14 @@ public class save {
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
+                Boolean check = true;
+                    if(count == 0){
+                check = false;
+                }
                 String[] tribeLine = {};
                 tribeLine = line.split(",");
                 if(Integer.valueOf(tribeLine[0]) == 1){
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(path, true));
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(path, check));
                     String str0 = tribeLine[3];
                     String str1 = Integer.toString(saves[count][0]);
                     String str2 = Integer.toString(saves[count][1]);
@@ -57,7 +61,7 @@ public class save {
                     bw.close();
                 }
                 if(Integer.valueOf(tribeLine[0]) == 0){
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(path, true));
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(path, check));
                     String str0 = tribeLine[10];
                     String str1 = Integer.toString(saves[count][0]);
                     String str2 = Integer.toString(saves[count][1]);
