@@ -5,8 +5,9 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class calc {
-    public static void runCalc() throws InterruptedException, FileNotFoundException, IOException{
+    public static int[][] runCalc() throws InterruptedException, FileNotFoundException, IOException{
         tribe[] all = calcFile.tribeRead();
+        int[][] save = new int[all.length][all.length];
         Scanner localScanner = new Scanner(System.in);
         System.out.println("How many tribes a day are you planning to do?");
         String dayResult = localScanner.nextLine();
@@ -26,12 +27,10 @@ public class calc {
             Integer flag = 0;
             Integer localr = 0;
             Integer localxp = 0;
-            //The Boolean won't stop appearing as a warning and it is driving me crazy.
-            //I have figured out why it is a warning but will not fix it for now.
-            Boolean inputMiss = false;
             while(loopbreak != true){
                 if(r1.equalsIgnoreCase("Y")){
                     flag = 0;
+                    save[x][0] = 9;
                     loopbreak = true;
                 }
                 if(r1.equalsIgnoreCase("N")){
@@ -45,24 +44,22 @@ public class calc {
                             loopbreak = true;
                         }
                     }
-                    inputMiss = false;
                 }
                 if(loopbreak == false){
                     System.out.println("I didn't quite get that.");
-                    Thread.sleep(1000);
-                    if(inputMiss = true){
-                        System.out.println("Please make sure you entered in your rank and reputation values correctly.");
-                        Thread.sleep(1000);
-                        inputMiss = false;
-                    }
+                    Thread.sleep(100);
+                    System.out.println("Please make sure you entered in your rank and reputation values correctly.");
+                    Thread.sleep(100);
                     System.out.println("Please type out your answer again");
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                     System.out.println("Have you maxed out the " + localTribe.name + " tribe? [y/n]");
                     r1 = localScanner.nextLine();
                 }
             }
             if(flag == 1){
                 Integer nextDay = localTribe.daysLeft(localr, localxp);
+                save[x][0] = localr;
+                save[x][1] = localxp;
                 Integer index = tribe.getSmallest(daysTracker);
                 daysTracker[index] = daysTracker[index] + nextDay;
             }
@@ -70,5 +67,6 @@ public class calc {
         localScanner.close();
         Integer sessions = Collections.max(Arrays.asList(daysTracker));
         System.out.println("You will be finished in " + sessions + " days.");
+        return save;
     }
 }
