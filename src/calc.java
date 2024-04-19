@@ -69,4 +69,32 @@ public class calc {
         System.out.println("You will be finished in " + sessions + " days.");
         return save;
     }
+
+    public static void loadCalc(int[][] loads) throws FileNotFoundException, IOException {
+        tribe[] all = calcFile.tribeRead();
+        Scanner localScanner = new Scanner(System.in);
+        System.out.println("How many tribes a day are you planning to do?");
+        String dayResult = localScanner.nextLine();
+        Integer newResult = Integer.parseInt(dayResult);
+        if(newResult > 4 || newResult < 1){
+            newResult = 4;
+        }
+        Integer[] daysTracker = new Integer[newResult];
+        for(Integer x = 0; x < newResult; x++){
+            daysTracker[x] = 0;
+        }
+        for(int i = 0; i < all.length; i++){
+            int localr = loads[i][0];
+            if(localr < 9){
+                int localxp = loads[i][1];
+                tribe localTribe = all[i];
+                Integer nextDay = localTribe.daysLeft(localr, localxp); 
+                Integer index = tribe.getSmallest(daysTracker);
+                daysTracker[index] = daysTracker[index] + nextDay;
+            }
+        }
+        Integer sessions = Collections.max(Arrays.asList(daysTracker));
+        System.out.println("You will be finished in " + sessions + " days.");
+        localScanner.close();
+    }
 }

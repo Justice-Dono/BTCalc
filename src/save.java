@@ -1,13 +1,14 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class save {
-    public static void newFile() throws NumberFormatException, IOException {
-        File localFile = new File("file.csv");
+    public static void newFile(String path) throws NumberFormatException, IOException {
+        File localFile = new File(path);
         localFile.createNewFile();
         try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
             String line;
@@ -73,5 +74,24 @@ public class save {
                 count++;
             }
         }
+    }
+
+    public static int[][] loadFile(String path) throws FileNotFoundException, IOException{
+        File localFile = new File(path);
+        long count = calcFile.countLines(localFile.getPath());
+        int countInt = (int) count;
+        int[][] loads = new int[countInt][countInt];
+        int index = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] tribeLine = {};
+                tribeLine = line.split(",");
+                loads[index][0] = Integer.valueOf(tribeLine[1]);
+                loads[index][1] = Integer.valueOf(tribeLine[2]);
+                index++;
+            }
+        }
+        return loads;
     }
 }
